@@ -26,15 +26,16 @@ public class Perfil {
     @Column(name = "competencia")
     private List<String> competencias;
     
-    // ALTERADO: De LAZY para EAGER para o Java carregar os dados junto com o perfil
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    // CORRIGIDO: Voltamos para LAZY para evitar o conflito do Hibernate 6
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "perfil_id")
     private List<Projeto> projetos; 
 
-    // ALTERADO: De LAZY para EAGER
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    // CORRIGIDO: Voltamos para LAZY
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "perfil_id")
     private List<Certificado> certificados;
+
 
     // Getters e Setters
     public Long getId() { return id; } public void setId(Long id) { this.id = id; }
