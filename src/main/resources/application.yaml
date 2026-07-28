@@ -1,11 +1,13 @@
 spring:
   datasource:
-    # CORRIGIDO: Injeta a URL do Render adicionando a propriedade de SSL obrigatória para produção
-    url: jdbc:${DATABASE_URL}?sslmode=require
+    # Estrutura limpa de produção que monta o link sem duplicar o protocolo
+    url: jdbc:postgresql://${DB_HOST}:${DB_PORT:5432}/${DB_NAME}?sslmode=require
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+        dialect: org.postgresql.dialect.PostgreSQLDialect
