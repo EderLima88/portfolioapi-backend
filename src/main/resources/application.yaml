@@ -1,7 +1,7 @@
 spring:
   datasource:
-    # Formato oficial para ler a DATABASE_URL do Render injetando o prefixo JDBC do Java
-    url: jdbc:${DATABASE_URL}
+    # CORRIGIDO: Injeta a URL do Render adicionando a propriedade de SSL obrigatória para produção
+    url: jdbc:${DATABASE_URL}?sslmode=require
   jpa:
     hibernate:
       ddl-auto: update
@@ -9,4 +9,3 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-
