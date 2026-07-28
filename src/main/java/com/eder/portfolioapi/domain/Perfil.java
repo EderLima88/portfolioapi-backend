@@ -26,11 +26,13 @@ public class Perfil {
     @Column(name = "competencia")
     private List<String> competencias;
     
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY) 
+    // ALTERADO: De LAZY para EAGER para o Java carregar os dados junto com o perfil
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "perfil_id")
-    private List<Projeto> projetos;
-    
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY) 
+    private List<Projeto> projetos; 
+
+    // ALTERADO: De LAZY para EAGER
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "perfil_id")
     private List<Certificado> certificados;
 
