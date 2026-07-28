@@ -1,9 +1,7 @@
-
 spring:
   datasource:
-    # CORRIGIDO: O Spring Boot agora injeta a DATABASE_URL dentro do formato JDBC correto
-    url: jdbc:${DATABASE_URL:${spring.datasource.url}}
-    # Remova as linhas antigas de username e password daqui, pois a DATABASE_URL já contém os dois embutidos!
+    # Formato oficial para ler a DATABASE_URL do Render injetando o prefixo JDBC do Java
+    url: jdbc:${DATABASE_URL}
   jpa:
     hibernate:
       ddl-auto: update
@@ -11,3 +9,4 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+
