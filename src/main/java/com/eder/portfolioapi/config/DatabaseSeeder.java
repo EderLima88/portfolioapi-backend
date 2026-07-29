@@ -51,4 +51,4 @@ public class DatabaseSeeder implements CommandLineRunner {
         }
     }
 }
-//atualizado 29 jun 2026
+//atualizado 29 jun 2026.
