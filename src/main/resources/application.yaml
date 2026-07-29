@@ -6,6 +6,6 @@ spring:
     password: ${RENDER_POSTGRES_PASSWORD}
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     show-sql: true
     # O bloco 'properties' com o dialect antigo foi completamente removido daqui!
