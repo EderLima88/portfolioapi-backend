@@ -1,13 +1,9 @@
 spring:
   datasource:
-    # Monta a URL de conexão casando perfeitamente com os nomes das variáveis do Render
     url: jdbc:postgresql://${RENDER_POSTGRES_HOST}:${RENDER_POSTGRES_PORT:5432}/${RENDER_POSTGRES_DB}?sslmode=require
     username: ${RENDER_POSTGRES_USER}
     password: ${RENDER_POSTGRES_PASSWORD}
   jpa:
     hibernate:
-		# ddl-auto: create -> Apaga o banco antigo e insere os dados novos a cada deploy/push.
-		# ddl-auto: create-drop -> Apaga todas as tabelas no momento exato em que a API desliga.
-		ddl-auto: create                     
+      ddl-auto: create
     show-sql: true
-    
