@@ -6,6 +6,16 @@ spring:
     password: ${RENDER_POSTGRES_PASSWORD}
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
+	  # ===================================================================================
+	  # GUIA DE CONFIGURAÇÃO DE BANCO DO ÉDER (DIFERENÇA ENTRE OS DOIS MODOS):
+	  #
+	  # ddl-auto: create      -> Apaga o banco antigo e insere os dados novos a cada deploy/push.
+	  #                          VANTAGEM: Os dados continuam salvos no PostgreSQL mesmo quando
+	  #                          a API gratuita do Render vai dormir (entra em modo de espera).
+	  #
+	  # ddl-auto: create-drop -> Também apaga o banco e insere os dados novos ao iniciar a API.
+	  #                          DESVANTAGEM: Apaga TODAS as tabelas do PostgreSQL no momento exato 
+	  #                          em que a API desliga ou vai dormir. O banco fica 100% vazio na folga.  
     show-sql: true
     # O bloco 'properties' com o dialect antigo foi completamente removido daqui!
