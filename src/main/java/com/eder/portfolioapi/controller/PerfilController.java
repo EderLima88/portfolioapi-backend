@@ -19,11 +19,31 @@ public class PerfilController {
     }
 
     @GetMapping
-    public ResponseEntity<Map<String, Object>> obterPortfolioCompleto() {
-        // Busca o perfil ou joga um objeto vazio
+    public ResponseEntity<?> obterPortfolioCompleto() {
+        // 📡 Busca a primeira linha da tabela no PostgreSQL
         Perfil perfil = repository.findAll().stream().findFirst().orElse(new Perfil());
         
-        // Monta um mapa chave-valor para garantir que o Jackson serialize sem travar nas coleções do JPA
+        // 🚨 VALIDAÇÃO DE SEGURANÇA (ANTI-COLD-START):
+        // Se o perfil não existir no banco OU se o nome/resumo vier nulo por lentidão do primeiro boot
+        if (perfil.getId() == null || perfil.getNome() == null || perfil.getResumo() == null) {
+            
+            // Pausa defensiva de hardware de 800ms para aguardar o DatabaseSeeder fechar a transação
+            try { 
+                Thread.sleep(800); 
+            } catch (InterruptedException e) { 
+                Thread.currentThread().interrupt(); 
+            }
+            
+            // Refaz a consulta ao banco de dados com a carga de dados já consolidada
+            perfil = repository.findAll().stream().findFirst().orElse(new Perfil());
+            
+            // Se mesmo após a pausa o banco continuar vazio, retorna um status limpo avisando o cliente
+            if (perfil.getNome() == null) {
+                return ResponseEntity.status(503).body("O servidor ainda está inicializando o banco de dados. Aguarde.");
+            }
+        }
+        
+        // 🔒 Monta um mapa chave-valor para garantir que o Jackson serialize sem travar nas coleções do JPA
         Map<String, Object> jsonSeguro = new HashMap<>();
         jsonSeguro.put("id", perfil.getId());
         jsonSeguro.put("nome", perfil.getNome());
