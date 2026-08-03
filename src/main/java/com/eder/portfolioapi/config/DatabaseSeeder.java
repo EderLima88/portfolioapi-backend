@@ -30,7 +30,7 @@ public class DatabaseSeeder implements CommandLineRunner {
             eder.setLinkGithub("https://github.com/EderLima88"); 
             eder.setLinkLinkedin("https://www.linkedin.com/in/%C3%A9der-de-lima-64b70626a/");
             eder.setEmail("eder.ebl@gmail.com"); 
-            eder.setTelefone("(51) 984049178");
+            eder.setTelefone("https://wa.me/5551984049178");
             eder.setCompetencias(List.of("APIs RESTful", "Spring Boot", "Docker", "React", "Angular", "Java", "MySQL", "Shell Scripting", "Linux"));
 
             List<Projeto> projs = new ArrayList<>();
