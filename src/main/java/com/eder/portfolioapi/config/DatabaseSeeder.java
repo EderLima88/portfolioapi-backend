@@ -26,7 +26,7 @@ public class DatabaseSeeder implements CommandLineRunner {
             eder.setNome("Eder de Lima");
             eder.setCargo("Desenvolvedor Full Stack Júnior | Java | Spring Boot | APIs REST | Angular | React | Docker | Linux & Shell Scripting");
             eder.setFormacao("Graduação em Tecnologia");
-            eder.setResumo("No desenvolvimento backend, possuo base na criação de APIs RESTful, padronizadas e escaláveis utilizando Java, Spring Boot e persistência de dados em MySQL. No frontend, possuo flexibilidade desenvolvimento em interfaces dinâmicas tanto com Angular quanto com React consumindo serviços REST. Possuo facilidade em ambientes Linux, atuando com automação em Shell Scripting e containerização de aplicações utilizando Docker. Busco minha primeira oportunidade para aplicar boas práticas de desenvolvimento (Clean Code), arquitetura de software e cultura DevOps.");
+            eder.setResumo("No desenvolvimento backend, possuo base na criação de APIs RESTful, padronizadas e escaláveis utilizando Java, Spring Boot e persistência de dados em MySQL. No frontend, possuo flexibilidade desenvolvimento em interfaces dinâmicas tanto com Angular quanto com React consumindo serviços REST. Possuo facilidade em ambientes Linux, atuando com automação em Shell Scripting e containerização de aplicações utilizando Docker.");
             eder.setLinkGithub("https://github.com/EderLima88"); 
             eder.setLinkLinkedin("https://www.linkedin.com/in/%C3%A9der-de-lima-64b70626a/");
             eder.setEmail("eder.ebl@gmail.com"); 
